@@ -7,10 +7,14 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap"
 import { FormsModule } from "@angular/forms"
 import { HttpClientModule } from "@angular/common/http";
 import { HomeComponent } from './home/home.component';
+import { RestApiService } from './rest-api.service';
+import { MessageComponent } from './message/message.component';
+import { DataService } from './data.service';
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    MessageComponent
   ],
   imports: [
     BrowserModule,
@@ -19,7 +23,7 @@ import { HomeComponent } from './home/home.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [ RestApiService,DataService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

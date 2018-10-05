@@ -13,7 +13,7 @@ export class AppComponent {
     return localStorage.getItem('token');
   }
   collapse(){
-    this.isCollapsed= true;
+    this.isCollapsed = true;
   }
   closeDropdown(dropdown)
   {
