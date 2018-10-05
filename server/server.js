@@ -4,6 +4,7 @@ const bodyparser = require("body-parser");
 const mongoose = require("mongoose");
 // mongodb://<dbuser>:<dbpassword>@ds123003.mlab.com:23003/amazonclone
 const config = require("./config");
+const routes = require("./routes/account");
 mongoose.connect(config.database, err=>{
 if(err)
 {
@@ -23,9 +24,15 @@ app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 });
-app.get('/',(req,res,next)=>{
-res.json({
-    user: 'soumya',
-})
-});
+app.use('/api/accounts',routes);
+
+
+//Frst test test route som for test api
+// app.get('/',(req,res,next)=>{
+//     res.json({
+//         user: 'soumya',
+//     });
+// });
+
+
 app.listen(config.port);
