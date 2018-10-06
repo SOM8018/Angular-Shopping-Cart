@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const schema = mongoose.Schema;
 const bcrypt = require("bcrypt-nodejs");
 const crypto = require("crypto");
-const userSchema = new schema({
+const UserSchema = new schema({
     email:{type: String,unique:true,lowercase:true},
     name: String,
     password: String,
@@ -14,15 +14,17 @@ const userSchema = new schema({
         city:String,
         state: String,
         country: String,
-        postalCode: String
-
+        postalCode: String,
     },
     created:{type:Date,default:Date.now}
 });
 //encrypt the password before save into database by using //bcrypt.hash
-userSchema.pre('save',(next)=>{
+UserSchema.pre('save',function(next){
     var user= this;
-    if(!user.isModified('password')) return next();
+    if (!user.isModified('password'))
+    { 
+        return next();
+    }
     bcrypt.hash(user.password,null,null,(err,hash)=>{
         if(err)
         {
@@ -30,17 +32,18 @@ userSchema.pre('save',(next)=>{
         }
         else
         {
-            this.password=hash;
+            user.password=hash;
+            next();
         }
-        next();
+        
     });
 });
 // custom function to check wheter you entered passsword is matched with database password or not //bcrypt.comapreSync()
-userSchema.methods.comparepassword= function(password)
+UserSchema.methods.comparepassword= function(password)
 {
     return bcrypt.compareSync(password,this.password);
 }
-userSchema.methods.gravatar = function(size)
+UserSchema.methods.gravatar = function(size)
 {
     if(!this.size) size=200;
     if(!this.email) 
@@ -52,4 +55,4 @@ userSchema.methods.gravatar = function(size)
         return 'https://gravatar.com/avatar/'+md5+'?s'+size+'&d=retro';
     }
 }
-module.exports = mongoose.model('User',userSchema);
+module.exports = mongoose.model('User',UserSchema);
