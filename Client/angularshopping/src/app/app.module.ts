@@ -10,11 +10,13 @@ import { HomeComponent } from './home/home.component';
 import { RestApiService } from './rest-api.service';
 import { MessageComponent } from './message/message.component';
 import { DataService } from './data.service';
+import { RegistrationComponent } from './registration/registration.component';
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    MessageComponent
+    MessageComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,
