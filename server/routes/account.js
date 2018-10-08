@@ -80,4 +80,18 @@ router.post('/login',(req,res,next)=>{
         }
     });
 });
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//PROFILE Rest Api - 10:08:2018 - SOUMYARANJAN MOHANTY  
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+//*******************/                     //*******************/
+//router.get('/profile')       same as      router.route('profile')
+//router.post('/profile')                   .get()
+/********************///                    .post()
+
+router.route('profile')
+.get()
+.post()
+
+
 module.exports = router;

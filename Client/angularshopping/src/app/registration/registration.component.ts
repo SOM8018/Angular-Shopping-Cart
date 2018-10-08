@@ -33,7 +33,7 @@ export class RegistrationComponent implements OnInit {
           {
             if(this.password== this.password1)
             {
-              
+              return true;
             }
             else{
               this.data.error('password donot match , Kindly check');
@@ -67,7 +67,7 @@ export class RegistrationComponent implements OnInit {
     {
       if(this.validate())
       {
-        const data = await this.rest.post('http://localhost:3000/api/accounts/signup',
+        const data = await this.rest.post('http://localhost:3030/api/accounts/signup',
           {name:this.name,
             email:this.email,
               password:this.password,
