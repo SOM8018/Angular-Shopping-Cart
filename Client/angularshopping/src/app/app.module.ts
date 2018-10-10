@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap"
 import { FormsModule } from "@angular/forms"
 import { HttpClientModule } from "@angular/common/http";
-import { HomeComponent } from './home/home.component';
+
 
 //import services and register in providers @NgModule
 import { RestApiService } from './rest-api.service';
@@ -14,9 +14,11 @@ import { DataService } from './data.service';
 import { AuthGuardService } from './auth-guard.service';
 
 //import Components and register in declarations @NgModule
+import { HomeComponent } from './home/home.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { LoginComponent } from './login/login.component';
 import { MessageComponent } from './message/message.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 @NgModule({
@@ -25,7 +27,8 @@ import { MessageComponent } from './message/message.component';
     HomeComponent,
     MessageComponent,
     RegistrationComponent,
-    LoginComponent
+    LoginComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

@@ -77,6 +77,7 @@ export class RegistrationComponent implements OnInit {
         {
           localStorage.setItem('token',data['token']);
           this.data.success('Registarion Successful');
+          await this.data.getProfile();
         }else{
             this.data.error(data['message']);
         }
