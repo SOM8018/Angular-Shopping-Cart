@@ -39,7 +39,7 @@ UserSchema.pre('save',function(next){
     });
 });
 // custom function to check wheter you entered passsword is matched with database password or not //bcrypt.comapreSync()
-UserSchema.methods.comparePassword= function(password)
+UserSchema.methods.comparePassword = function(password)
 {
     return bcrypt.compareSync(password,this.password);
 }

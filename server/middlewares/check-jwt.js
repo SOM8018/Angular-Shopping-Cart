@@ -1,6 +1,5 @@
 const jwt = require("jsonwebtoken");
 const config = require("../config");
-
 module.exports = function(req,res,next)
 {
     //Check the token exist in localstorage or not ?
@@ -22,6 +21,7 @@ module.exports = function(req,res,next)
             // if we want to access user info then we can write in //
             //     req.decoded.user.name or req.decoded.user.email etc.
             req.decoded = decoded;
+            next();
         })
     }
     else{
