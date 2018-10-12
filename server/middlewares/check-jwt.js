@@ -17,12 +17,14 @@ module.exports = function(req,res,next)
                 });
             }
             else
+            {
             // save the decoded token in req.decoded//req.decoded contain all the user info 
             // if we want to access user info then we can write in //
             //     req.decoded.user.name or req.decoded.user.email etc.
             req.decoded = decoded;
             next();
-        })
+            }
+        });
     }
     else{
         res.status(403).json({
