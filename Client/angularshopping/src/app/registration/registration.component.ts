@@ -78,6 +78,11 @@ export class RegistrationComponent implements OnInit {
           localStorage.setItem('token',data['token']);
           this.data.success('Registarion Successful');
           await this.data.getProfile();
+          this.router.navigate(['profile/address']).then(()=>{
+            this.data.success("Registartion Succesful ! Please Enter Your Shipping Address");
+          }).catch(error=>{
+            this.data.error(error);
+          })
         }else{
             this.data.error(data['message']);
         }
