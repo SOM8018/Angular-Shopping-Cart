@@ -152,13 +152,13 @@ router.route('/address')
     //if any token saved then update the user address 
     User.findOne({ _id: req.decoded.user._id },(err,user)=>{
            if(err) return next(err);
-        if(req.body.addr1)
+        if(req.body.address1)
         {
-            user.address.address1 = req.body.addr1;
+            user.address.address1 = req.body.address1;
         }
-        if(req.body.addr2)
+        if(req.body.address2)
         {
-            user.address.address2 = req.body.addr2;
+            user.address.address2 = req.body.address2;
         }
         if(req.body.city)
         {
@@ -172,9 +172,9 @@ router.route('/address')
         {
             user.address.country = req.body.country;
         }
-        if(req.body.postalcode)
+        if(req.body.postalCode)
         {
-            user.address.postalcode = req.body.postalcode;
+            user.address.postalCode = req.body.postalCode;
         }
         user.save();
         res.json({

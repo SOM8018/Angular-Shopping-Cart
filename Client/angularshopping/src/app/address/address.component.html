@@ -5,12 +5,12 @@
     </h4>
     <hr>
     <app-message></app-message>
-    <div *ngIf="!cureentAddress" class="m-auto">
+    <div *ngIf="!currentAddress" class="m-auto">
       <h1 class="text-center display-3 mt-5">
         <i class="fa fa-spinner fa-spin"></i>
       </h1>
     </div>
-    <div *ngIf="cureentAddress" class="card-bg-light">
+    <div *ngIf="currentAddress" class="card bg-light">
       <div class="card-body">
         <form >
           <div class="form-group">
@@ -36,18 +36,19 @@
             </div>
             <div class="col-md-4">
                 <div class="form-group">
+                  <label for="postalCode">Postal code</label>
+                  <input type="text"name="postalCode"class="form-control"[(ngModel)]="currentAddress.postalCode">
+                </div>
+            </div>
+          </div>
+            <div class="col-md-4">
+                <div class="form-group">
                   <label for="country">Country</label>
                   <input type="text" name="country" class="form-control" [(ngModel)]="currentAddress.country">
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="form-group">
-                  <label for="postalCode">Postal code</label>
-                  <input type="text" name="postalCode" class="form-control" [(ngModel)]="currentAddress.postalCode">
-                </div>
-            </div>
-            <button type="button" (click)="updateAddress()" [disabled]="btnDisabled">Change Address</button>
-          </div>
+            <button type="button" class="btn btn-danger" (click)="updateAddress()" [disabled]="btnDisabled">Change Address</button>
+          
         </form>
       </div>
     </div>
