@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 const cors = require('cors');
 // mongodb://<dbuser>:<dbpassword>@ds123003.mlab.com:23003/amazonclone
 const config = require("./config");
-const routes = require("./routes/account");
+
 mongoose.connect(config.database, { useNewUrlParser: true } ,err=>{
 if(err)
 {
@@ -26,8 +26,11 @@ app.use(cors());
 //     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 //     next();
 // });
-app.use('/api/accounts',routes);
+const routes = require("./routes/account");
+const mainRoute = require("./routes/main");
 
+app.use('/api/accounts',routes);
+app.use('/api',mainRoute);
 
 //Frst test test route som for test api
 // app.get('/',(req,res,next)=>{
