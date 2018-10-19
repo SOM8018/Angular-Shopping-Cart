@@ -4,3 +4,5 @@ databaseURL: "https://e-clone-9bc42.firebaseio.com",
 projectId: "e-clone-9bc42",
 storageBucket: "e-clone-9bc42.appspot.com",
 messagingSenderId: "155411936734"
+
+storage bucket : "gs://e-clone-9bc42.appspot.com"

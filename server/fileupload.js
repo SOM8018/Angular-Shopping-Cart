@@ -1,15 +1,15 @@
 const express = require('express');
 const app = express();
 const firebase = require('firebase');
-const googleStorage = require('@google-cloud/storage');
+const Storage = require('@google-cloud/storage');
 const Multer = require('multer');
 
-const storage = googleStorage({
+const storage = Storage ({
   projectId: "e-clone-9bc42",
-  keyFilename: "AIzaSyArw4lA4iJ34uJfY_wVg-7WList-ySnKY0"
+  credentials: require('./keyfile.json')
 });
 
-const bucket = storage.bucket("<Firebase Storage Bucket URL");
+const bucket = storage.bucket("gs://e-clone-9bc42.appspot.com");
 
 const multer = Multer({
   storage: Multer.memoryStorage(),
