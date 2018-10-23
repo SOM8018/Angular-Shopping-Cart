@@ -2,28 +2,38 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-main">
     <div class="container-fluid">
         <a [routerLink]="['/']" class="navbar-brand">
-            <img style="width: 50px; height: 50px;"class="img-responsive" src="../assets/images/shopping-cart-small.png" alt="logo" srcset="">MyCart.com
+            <img class="img-responsive" src="https://png.icons8.com/nolan/50/000000/shop.png" height="50px" width="50px" alt="logo" srcset=""> MyCart.com
         </a>
         <button class="navbar-toggler" (click)="isCollapsed = !isCollapsed">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div [ngbCollapse]="isCollapsed" style="align-items: left;" class="collapse navbar-collapse flex-column" id="navbarNav">
             <div class="input-group w-75">
-                <input type="text" name="search" class="form-control" [(ngModel)]="searchTerm" (keyup.enter)="search()">
-                    <span id="searchBtn" class="bg-warning" (click)="search()">
-                        <i class="fa fa-search"></i>
+                <input type="text" name="search" class="form-control" placeholder="Search here.." [(ngModel)]="searchTerm" (keyup.enter)="search()">
+                    <span id="searchBtn" class="color-change" (click)="search()">
+                        <i class="heartbeat fa fa-search"></i>
                     </span>
             </div>
             <div class="w-100">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a (click)="collapse()" routerLink="/categories" routerLinkActive="active" class="nav-link"><i class="fa fa-server" aria-hidden="true"></i> Categories</a>
+                        <a (click)="collapse()" routerLink="/categories" routerLinkActive="active" class="nav-link"><img src="https://png.icons8.com/color/50/000000/categorize.png" height="20px" width="20px"> Categories</a>
+                    </li>
+                    <li class="nav-item">
+                        <a (click)="collapse()" routerLink="/categories" routerLinkActive="active" class="nav-link"><img src="https://png.icons8.com/nolan/50/000000/handshake.png" height="20px" width="20px"> Today's Deal</a>
+                    </li>
+                    <li class="nav-item">
+                        <a (click)="collapse()" routerLink="/categories" routerLinkActive="active" class="nav-link"><img src="https://png.icons8.com/nolan/50/000000/buy.png" height="20px" width="20px"> Buy</a>
+                    </li>
+                    <li class="nav-item">
+                        <a (click)="collapse()" routerLink="/categories" routerLinkActive="active" class="nav-link"><img src="https://png.icons8.com/nolan/50/000000/sell.png"
+                        height="20px" width="20px"> Sell</a>
                     </li>
                     <li class="nav-item ml-0 ml-md-auto" ngbDropdown #dropdown="ngbDropdown">
                         <a class="nav-link dropdown-toggle" ngbDropdownToggle>
-                            <i class="fa fa-user mr-1"></i>
-                                <span *ngIf="!token">Accounts</span>
-                                <span *ngIf="data.user">{{"Hi"+ data.user.name}}</span>
+                            <img src="https://png.icons8.com/nolan/50/000000/user.png" height="20px" width="20px"> 
+                                <span *ngIf="!token"> Accounts</span>
+                                <span *ngIf="data.user">{{ data.user.name}}</span>
                         </a>
                         <div ngbDropdownMenu class="dropdown-menu">
                             <a *ngIf="token" (click)="closeDropdown(dropdown);collapse();" routerLink="/profile" class="dropdown-item">
@@ -42,7 +52,7 @@
                     </li>
                     <li class="nav-item ml-0 ml-md-2">
                         <a (click)="collapse()" routerLink="/cart" routerLinkActive="active" class="nav-link">
-                            <i class="fa fa-shopping-cart mr-1"></i>Cart
+                            <img src="https://png.icons8.com/nolan/50/000000/shopping-cart.png" height="20px" width="20px"> Cart
                         </a>
                     </li>
                 </ul>
