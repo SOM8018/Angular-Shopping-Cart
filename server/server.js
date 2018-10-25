@@ -28,9 +28,11 @@ app.use(cors());
 // });
 const routes = require("./routes/account");
 const mainRoute = require("./routes/main");
+const sellerRoute = require("./routes/seller");
 
 app.use('/api/accounts',routes);
 app.use('/api',mainRoute);
+app.use('/api/seller',sellerRoute);
 
 //Frst test test route som for test api
 // app.get('/',(req,res,next)=>{

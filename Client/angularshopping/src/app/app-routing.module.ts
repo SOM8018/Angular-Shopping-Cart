@@ -7,7 +7,9 @@ import { AuthGuardService } from "./auth-guard.service";
 import { ProfileComponent } from './profile/profile.component';
 import { SettingsComponent } from './settings/settings.component';
 import { AddressComponent } from './address/address.component';
-
+import { CategoriesComponent } from './categories/categories.component';
+import { PostProductComponent } from './post-product/post-product.component';
+import { MyProductsComponent } from './my-products/my-products.component';
 
 const routes: Routes = [
   {
@@ -28,6 +30,10 @@ const routes: Routes = [
     component: ProfileComponent,
     canActivate : [AuthGuardService]
   },
+   {
+    path:'categories',
+    component: CategoriesComponent
+  },
   {
     path:'profile/settings',
     component: SettingsComponent,
@@ -36,6 +42,16 @@ const routes: Routes = [
   {
     path:'profile/address',
     component: AddressComponent,
+    canActivate : [AuthGuardService]
+  },
+  {
+    path:'profile/postproduct',
+    component: PostProductComponent,
+    canActivate : [AuthGuardService]
+  },
+  {
+    path:'profile/myproducts',
+    component: MyProductsComponent,
     canActivate : [AuthGuardService]
   },
   {
