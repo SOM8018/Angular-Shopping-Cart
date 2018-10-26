@@ -18,4 +18,53 @@
       </ng-template>
     </ngb-carousel>
   </div>
+  <div class="container p-5">
+    <app-message></app-message>
+    <p class="lead">
+      <b>Recommended Deals: Last-Minute Deals</b>
+    </p>
+    <div class="row">
+      <div *ngIf="!products" class="m-auto">
+        <h1 class="text-center display-3 mt-5">
+          <i class="fa fa-spinner fa-spin"></i>
+        </h1>
+      </div>
+      <div *ngFor="let product of products" class="col-md-3 mb-5">
+        <a routerLink="/product/{{ product._id }}">
+          <div class="card mb-r wow fadeIn" data-wow-delay="0.4s">
+            <!--Card image-->
+              <img class="img-fluid" width="640px" height="480px" src="{{ product.image }}" alt="Card image cap">
+              <!--Card content-->
+              <div class="card-body">
+                <!--Title-->
+                <h5 class="font-bold">
+                <strong>{{ product.title }}</strong>
+                <span class="badge badge-info">New</span>
+                </h5>
+                <hr>
+                <h4>
+                <strong>{{ product.price | currency : 'INR'}}</strong>
+                </h4>
+                <!--Text-->
+                <p class="card-text mt-4">{{ product.description }}</p>
+
+                  <div class="flex">
+                    <a href="#" class="btn btn-info btn-sm flex">Buy now </a>
+                    <a href="#" class="btn btn-danger btn-sm flex">Add To Cart </a>
+                      <div class="heart">
+                        <i class="fa fa-heart" style="font-size:30px;color:red"></i>
+                      </div>
+                  </div>
+                
+              </div>
+              
+          </div>
+          
+        </a>
+      </div>
+      
+    </div>
+    
+  </div>
+  
 </section>
