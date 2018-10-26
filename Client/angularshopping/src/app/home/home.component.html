@@ -38,15 +38,15 @@
               <div class="card-body">
                 <!--Title-->
                 <h5 class="font-bold">
-                <strong>{{ product.title }}</strong>
-                <span class="badge badge-info">New</span>
+                <strong>{{ product.title |  slice:0:30 }}</strong>
+                <span class="heartbeat badge badge-info">New</span>
                 </h5>
                 <hr>
                 <h4>
                 <strong>{{ product.price | currency : 'INR'}}</strong>
                 </h4>
                 <!--Text-->
-                <p class="card-text mt-4">{{ product.description }}</p>
+                <p class="card-text mt-4">{{ product.description |  slice:0:65}}</p>
 
                   <div class="flex">
                     <a href="#" class="btn btn-info btn-sm flex">Buy now </a>

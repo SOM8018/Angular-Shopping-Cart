@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-
+const deepPopulate = require('mongoose-deep-populate')(mongoose);
 const ProductSchema = new Schema({
   
   category: { type: Schema.Types.ObjectId, ref: 'Category'},
@@ -12,5 +12,5 @@ const ProductSchema = new Schema({
   price: Number,
   crated: { type: Date, default: Date.now }
 });
-
+ProductSchema.plugin(deepPopulate);
 module.exports = mongoose.model('Product',ProductSchema);

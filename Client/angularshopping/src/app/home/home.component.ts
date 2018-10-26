@@ -21,6 +21,5 @@ export class HomeComponent implements OnInit {
       this.data.error(error['message']);
     }
   }
-  }
 
 }
