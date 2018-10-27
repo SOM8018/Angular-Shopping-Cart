@@ -11,6 +11,7 @@ export class HomeComponent implements OnInit {
 
   constructor(private data: DataService, private rest: RestApiService) { }
    products: any;
+   
   async ngOnInit() {
   	 try {
       const data = await this.rest.get('http://localhost:3030/api/products');
