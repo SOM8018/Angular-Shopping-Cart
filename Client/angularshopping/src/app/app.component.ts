@@ -11,7 +11,9 @@ export class AppComponent {
   searchTerm = '';
   isCollapsed = true;
   constructor(private router:Router ,private data:DataService){
+    this.data.cartItems = this.data.getCart().length;
     this.data.getProfile();  
+
   }
 
 
@@ -29,12 +31,16 @@ export class AppComponent {
   logout()
   {
     this.data.user = {};
+     this.data.cartItems = 0;
     localStorage.clear();
     this.router.navigate(['']);
   }
 
   search()
   {
-
+    if (this.searchTerm) {
+      this.collapse();
+      this.router.navigate(['search', { query: this.searchTerm }]);
+    }
   }
 }

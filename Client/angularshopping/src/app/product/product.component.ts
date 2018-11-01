@@ -39,6 +39,12 @@ export class ProductComponent implements OnInit {
     });
   }
 
+  addToCart() {
+    this.data.addToCart(this.product)
+      ? this.data.success('Product successfully added to cart.')
+      : this.data.error('Product has already been added to cart.');
+  }
+
   async postReview() {
     this.btnDisabled = true;
     try {

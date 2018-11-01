@@ -53,6 +53,7 @@
                     <li class="nav-item ml-0 ml-md-2">
                         <a (click)="collapse()" routerLink="/cart" routerLinkActive="active" class="nav-link">
                             <img src="https://png.icons8.com/nolan/50/000000/shopping-cart.png" height="20px" width="20px"> Cart
+                            <span *ngif="data.cartItems" class="badge badge-warning ml-1">{{ data.cartItems }}</span>
                         </a>
                     </li>
                 </ul>

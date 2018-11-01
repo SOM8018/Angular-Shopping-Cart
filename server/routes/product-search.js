@@ -1,11 +1,13 @@
 const router = require('express').Router();
-
+const config = require('../config');
 const algoliasearch = require('algoliasearch');
-const client = algoliasearch('DCCVL1624R', 'e62667286cf465f1294342a6fa4ef17a');
+const client = algoliasearch(config.algolia.appId, config.algolia.apiKey);
 const index = client.initIndex('SomAmazon');
 
 
-
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//product search Rest Api - 11:01:2018 - SOUMYARANJAN MOHANTY
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++
 router.get('/', (req, res, next) => {
   if (req.query.query) {
     index.search({

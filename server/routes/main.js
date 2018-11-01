@@ -4,6 +4,7 @@ const jwt = require("jsonwebtoken");
 const Category = require("../models/category");
 const config = require("../config");
 const Product = require("../models/product");
+const Order = require('../models/order');
 const async = require("async");
 const Review = require("../models/review");
 const checkJWT = require("../middlewares/check-jwt");
@@ -193,5 +194,45 @@ router.route('/categories')
       }
     ]);
   });
+
+//============================================================================================
+//Stripe payment REST API( With async WATERFALL callback ) 02:11:2018 12:44 AM ++ **
+//============================================================================================
+  router.post('/payment', checkJWT, (req, res, next) => {
+  const stripeToken = req.body.stripeToken;
+  const currentCharges = Math.round(req.body.totalPrice * 100);
+
+  stripe.customers
+    .create({
+      source: stripeToken.id
+    })
+    .then(function(customer) {
+      return stripe.charges.create({
+        amount: currentCharges,
+        currency: 'INR',
+        customer: customer.id
+      });
+    })
+    .then(function(charge) {
+      const products = req.body.products;
+
+      let order = new Order();
+      order.owner = req.decoded.user._id;
+      order.totalPrice = currentCharges;
+      
+      products.map(product => {
+        order.products.push({
+          product: product.product,
+          quantity: product.quantity
+        });
+      });
+
+      order.save();
+      res.json({
+        success: true,
+        message: "Successfully made a payment"
+      });
+    });
+});
 
   module.exports = router;

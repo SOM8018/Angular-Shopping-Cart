@@ -1,10 +1,12 @@
 const express = require("express");
+const config = require("./config");
 const morgan = require("morgan");
 const bodyparser = require("body-parser");
 const mongoose = require("mongoose");
 const cors = require('cors');
+const stripe = require("stripe")(config.stripe.Secret_key);
 // mongodb://<dbuser>:<dbpassword>@ds123003.mlab.com:23003/amazonclone
-const config = require("./config");
+
 
 mongoose.connect(config.database, { useNewUrlParser: true } ,err=>{
 if(err)
